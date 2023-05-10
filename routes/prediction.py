@@ -22,7 +22,7 @@ predictionRouter = APIRouter()
 
 @predictionRouter.post("/diagnosis")
 def create_prediction(prediction: Prediction):
-    mnb = joblib.load('breast_cancer_diagnosis_random_forest_model.joblib')
+    mnb = joblib.load('routes/breast_cancer_diagnosis_random_forest_model.joblib')
 
 
     data = {
