@@ -2,7 +2,7 @@ from http.client import HTTPException
 from telnetlib import STATUS
 from fastapi import APIRouter
 from schemas.prediction import Prediction
-from schemas.treatment import Treatment
+from schemas.prediction import Treatment
 #import ML
 import pandas as pd
 import numpy as np  
@@ -57,12 +57,12 @@ def create_prediction(prediction: Prediction):
 
 
 @predictionRouter.post("/treatment")
-def create_prediction(PredictionTreatment: Treatment):
+def create_prediction(predictionTreatment: Treatment):
     mnb = joblib.load('routes/breast_cancer_treatment_random_forest_model.joblib')
 
 
     # data = {
-    #     'texture_mean' : [PredictionTreatment.AgeAtDiagnosis],
+    #     'texture_mean' : [predictionTreatment.AgeAtDiagnosis],
     #     'perimeter_mean' : [prediction.perimeter_mean],
     #     'smoothness_mean': [prediction.smoothness_mean],
     #     'concave points_mean': [prediction.concave_points_mean],
@@ -71,21 +71,21 @@ def create_prediction(PredictionTreatment: Treatment):
     # }
     
     data = {
-        'AgeAtDiagnosis' : [PredictionTreatment.AgeAtDiagnosis],
-        'Chemotherapy' : [PredictionTreatment.Chemotherapy],
-        'Cohort' : [PredictionTreatment.Cohort],
-        'ERStatus' : [PredictionTreatment.ERStatus],
-        'NeoplasmHistologicGrade' : [PredictionTreatment.NeoplasmHistologicGrade],
-        'HormoneTherapy' : [PredictionTreatment.HormoneTherapy],
-        'LymphNodesExaminedPositive' : [PredictionTreatment.LymphNodesExaminedPositive],
-        'MutationCount' : [PredictionTreatment.MutationCount],
-        'NottinghamPrognosticIndex' : [PredictionTreatment.NottinghamPrognosticIndex],
-        'OncotreeCode' : [PredictionTreatment.OncotreeCode],
-        'OverallSurvival(Months)' : [PredictionTreatment.OverallSurvival_Months],
-        'PRStatus' : [PredictionTreatment.PRStatus],
-        'RadioTherapy' : [PredictionTreatment.RadioTherapy],
-        'GeneClassifierSubtype' : [PredictionTreatment.GeneClassifierSubtype],
-        'TumorStage' : [PredictionTreatment.TumorStage],
+        'AgeAtDiagnosis' : [predictionTreatment.AgeAtDiagnosis],
+        'Chemotherapy' : [predictionTreatment.Chemotherapy],
+        'Cohort' : [predictionTreatment.Cohort],
+        'ERStatus' : [predictionTreatment.ERStatus],
+        'NeoplasmHistologicGrade' : [predictionTreatment.NeoplasmHistologicGrade],
+        'HormoneTherapy' : [predictionTreatment.HormoneTherapy],
+        'LymphNodesExaminedPositive' : [predictionTreatment.LymphNodesExaminedPositive],
+        'MutationCount' : [predictionTreatment.MutationCount],
+        'NottinghamPrognosticIndex' : [predictionTreatment.NottinghamPrognosticIndex],
+        'OncotreeCode' : [predictionTreatment.OncotreeCode],
+        'OverallSurvival(Months)' : [predictionTreatment.OverallSurvival_Months],
+        'PRStatus' : [predictionTreatment.PRStatus],
+        'RadioTherapy' : [predictionTreatment.RadioTherapy],
+        'GeneClassifierSubtype' : [predictionTreatment.GeneClassifierSubtype],
+        'TumorStage' : [predictionTreatment.TumorStage],
     }
 
     data = pd.DataFrame(data)
