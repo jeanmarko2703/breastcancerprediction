@@ -1,8 +1,7 @@
 from http.client import HTTPException
 from telnetlib import STATUS
 from fastapi import APIRouter
-from schemas.prediction import Prediction
-from schemas.prediction import Treatment
+from schemas.prediction import Prediction, Treatment
 #import ML
 import pandas as pd
 import numpy as np  
